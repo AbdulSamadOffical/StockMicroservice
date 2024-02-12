@@ -1,2 +1,2 @@
 # StockMicroservice
-Independent micro service for the stock catalogue.
+Independent microservice for the stock catalogue.
