@@ -1,6 +1,7 @@
 var builder = WebApplication.CreateBuilder(args);
+//builder.Services.AddAutoMapper(typeof(Program));
 
-
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 
 builder.Services.ConfigureDatabase(builder.Configuration);
@@ -11,6 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 

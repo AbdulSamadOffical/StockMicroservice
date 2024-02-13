@@ -2,15 +2,24 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Stock.Infrastructure.Persistence;
+using Stock.Domain.RepositoryContracts;
+using Stock.Infrastructure.Persistence.Repository;
+using Stock.Application.AppUsecases.GetStocks;
 
 
-public static class DatabaseStartup
+public static class Startup
 {
     public static void ConfigureDatabase(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<ApplicationContext>(options =>
             options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")
             , b => b.MigrationsAssembly("StockApi")));
+
+      
+        services.AddScoped(typeof(IGenericRepository<>), typeof(InMemoryGenericRepository<>));
+        services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+        services.AddScoped<IStockProductRepository, StockProductRepository>();
+        services.AddScoped<GetStocksUseCase>();
     }
 
 }

@@ -1,4 +1,5 @@
-﻿using Stock.Domain.Entities;
+﻿using Stock.Domain.DomainEntities;
+using Stock.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace Stock.Domain.RepositoryContracts
 {
     public interface IStockProductRepository
     {
-        public StockProduct getMaxStockProductByPrice(); 
+        public StockDomain GetStockById(int id);
     }
 }

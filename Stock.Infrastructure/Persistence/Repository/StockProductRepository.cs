@@ -1,24 +1,27 @@
 ﻿using Stock.Domain.Entities;
 using Stock.Domain.RepositoryContracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AutoMapper;
+using Stock.Domain.DomainEntities;
 
 namespace Stock.Infrastructure.Persistence.Repository
 {
     public class StockProductRepository : IStockProductRepository
     {
+        private readonly IMapper _mapper;
         protected readonly ApplicationContext _context;
-        public StockProductRepository(ApplicationContext context)
+        private readonly IGenericRepository<StockProduct> _stockProduct;
+        public StockProductRepository(IMapper mapper, ApplicationContext context, IGenericRepository<StockProduct> stockProduct)
         {
             _context = context;
+            _stockProduct = stockProduct;
+            _mapper = mapper;
         }
 
-        public StockProduct getMaxStockProductByPrice()
+        public StockDomain GetStockById(int id)
         {
-            throw new NotImplementedException();
+            var stockProduct = _stockProduct.GetById(id);
+            var stock = _mapper.Map<StockDomain>(stockProduct);
+            return stock;
         }
     }
 }
