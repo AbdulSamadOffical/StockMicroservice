@@ -1,4 +1,5 @@
 ﻿using Stock.Domain.DomainEntities;
+using Stock.Domain.Interfaces;
 using Stock.Domain.RepositoryContracts;
 
 
@@ -7,14 +8,14 @@ namespace Stock.Application.AppUsecases.GetStocks
     public class GetStocksUseCase
     {
 
-        private readonly IStockProductRepository _productRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public GetStocksUseCase(IStockProductRepository productRepository) {
-            _productRepository = productRepository;
+        public GetStocksUseCase(IUnitOfWork unitOfWork) {
+            _unitOfWork = unitOfWork;
         }
         public StockDomain GetStockById(int id) 
         {
-            return _productRepository.GetStockById(id);
+            return _unitOfWork.StockProductRepository.GetStockById(id);
         }
     }
 }

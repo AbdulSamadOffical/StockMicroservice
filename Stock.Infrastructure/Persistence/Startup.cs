@@ -5,6 +5,7 @@ using Stock.Infrastructure.Persistence;
 using Stock.Domain.RepositoryContracts;
 using Stock.Infrastructure.Persistence.Repository;
 using Stock.Application.AppUsecases.GetStocks;
+using Stock.Domain.Interfaces;
 
 
 public static class Startup
@@ -20,6 +21,8 @@ public static class Startup
         services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
         services.AddScoped<IStockProductRepository, StockProductRepository>();
         services.AddScoped<GetStocksUseCase>();
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
+       
     }
 
 }

@@ -26,7 +26,7 @@ namespace StockApi.Controllers
                 return NotFound(); 
             }
 
-           
+            
             return Ok(stockDomain); 
         }
     }
