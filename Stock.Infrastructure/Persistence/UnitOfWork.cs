@@ -25,8 +25,5 @@ namespace Stock.Infrastructure.Persistence
             return _context.SaveChanges();
         }
 
-
-
-
     }
 }

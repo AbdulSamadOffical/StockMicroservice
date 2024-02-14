@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using Stock.Application.AppUsecases.GetStocks;
 using Stock.Domain.Entities;
 using Stock.Domain.DomainEntities;
+using Stock.Domain.Dtos;
 
 
 namespace Stock.Infrastructure.AutoMapper
@@ -13,6 +13,7 @@ namespace Stock.Infrastructure.AutoMapper
         {
 
             CreateMap<StockProduct, StockDomain>();
+            CreateMap<StockDto, StockProduct>();
         }
 
     }

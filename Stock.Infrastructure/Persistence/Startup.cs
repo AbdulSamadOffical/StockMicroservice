@@ -4,8 +4,11 @@ using Microsoft.Extensions.Configuration;
 using Stock.Infrastructure.Persistence;
 using Stock.Domain.RepositoryContracts;
 using Stock.Infrastructure.Persistence.Repository;
-using Stock.Application.AppUsecases.GetStocks;
 using Stock.Domain.Interfaces;
+using Stock.Application.AppUsecases.Stocks.GetStocks;
+using Stock.Application.AppUsecases.Stocks.CreateStocks;
+using Stock.Application.AppUsecases.Stocks.UpdateStock;
+using Stock.Application.AppUsecases.Stocks.DeleteStock;
 
 
 public static class Startup
@@ -21,7 +24,10 @@ public static class Startup
         services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
         services.AddScoped<IStockProductRepository, StockProductRepository>();
         services.AddScoped<GetStocksUseCase>();
+        services.AddScoped<CreateStockUsecase>();
+        services.AddScoped<UpdateStockUseCase>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
+        services.AddScoped<DeleteStockUsecase>();
        
     }
 
