@@ -1,6 +1,8 @@
 
 
 
+using StockApi;
+
 var builder = WebApplication.CreateBuilder(args);
 //builder.Services.AddAutoMapper(typeof(Program));
 
@@ -17,6 +19,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
+app.ConfigureCustomExceptionMiddleware();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

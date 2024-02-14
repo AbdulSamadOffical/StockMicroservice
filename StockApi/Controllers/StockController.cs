@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Stock.Application.AppUsecases.GetStocks;
+using Stock.Domain.Exceptions;
 
 
 namespace StockApi.Controllers
@@ -23,7 +24,7 @@ namespace StockApi.Controllers
             var stockDomain = _getStocksUseCase.GetStockById(id);
             if (stockDomain == null)
             {
-                return NotFound(); 
+                 throw new NotFoundException("No Stock Found."); 
             }
 
             
